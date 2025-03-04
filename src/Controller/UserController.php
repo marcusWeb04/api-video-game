@@ -64,7 +64,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/{id}/edit", name="user_edit", methods={"PUT"})
      */
-    #[Route('/edit/{id}', name: 'user_edit', methods: ["POST"])]
+    #[Route('/edit/{id}', name: 'user_edit', methods: ['PUT', 'PATCH'])]
     public function edit(int $id, Request $request, EntityManagerInterface $entityManager): Response
     {
         // Trouver l'utilisateur par ID
@@ -92,7 +92,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/{id}/delete", name="user_delete", methods={"DELETE"})
      */
-    #[Route('/delete/{id}', name: 'user_show', methods: ["GET"])]
+    #[Route('/delete/{id}', name: 'user_show', methods: ["DELETE"])]
     public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
         $user = $entityManager->getRepository(User::class)->find($id);
